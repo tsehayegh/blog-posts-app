@@ -52,7 +52,7 @@ app.post('/blogPosts', (req, res) => {
       return res.status(400).send(message);
     }
   }
-  
+
   Blog
     .create({
       title: req.body.title,
@@ -117,6 +117,9 @@ function runServer(databaseUrl, port=PORT) {
 
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
+        console.log("connectionString is: " + databaseUrl);
+    	console.log("port is: " + port);
+
         resolve();
       })
       .on('error', err => {
