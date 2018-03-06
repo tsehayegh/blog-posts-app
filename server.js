@@ -102,7 +102,7 @@ app.delete('/blogPosts/:id', (req, res) => {
 
 
 app.use('*', function (req, res) {
-  res.status(404).json({ message: 'Not Found' });
+  res.status(404).json({ message: 'Not Found ${process.env.PORT}' });
 });
 
 
@@ -118,7 +118,7 @@ function runServer(databaseUrl, port=PORT) {
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
         console.log("connectionString is: " + databaseUrl);
-    	console.log("port is: " + port);
+
 
         resolve();
       })
