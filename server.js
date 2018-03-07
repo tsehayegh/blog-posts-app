@@ -112,6 +112,7 @@ function runServer(databaseUrl, port=PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
       if (err) {
+      	console.log(databaseUrl);
         return reject(err);
       }
 
@@ -128,6 +129,7 @@ function runServer(databaseUrl, port=PORT) {
       });
     });
   });
+  console.log(process.env.PORT, databaseUrl);
 }
 
 function closeServer() {
