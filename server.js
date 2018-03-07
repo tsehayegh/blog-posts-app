@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const {PORT, DATABASE_URL} = require('./config');
+const {PORT, DATABASE_URL, databaseUrl} = require('./config');
 const {Blog} = require('./models');
 
 
@@ -110,7 +110,7 @@ let server;
 
 function runServer(databaseUrl, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(DATABASE_URL, err => {
+    mongoose.connect(databaseUrl, (err,db) => {
       if (err) {
         return reject(err);
       }
@@ -118,8 +118,6 @@ function runServer(databaseUrl, port=PORT) {
       server = app.listen(port, () => {
         console.log(`Your app is listening on port ${port}`);
         console.log("connectionString is: " + databaseUrl);
-
-
         resolve();
       })
       .on('error', err => {
