@@ -110,7 +110,7 @@ let server;
 
 function runServer(databaseUrl, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/blogs-app', (err,db) => {
+    mongoose.connect(databaseUrl, (err,db) => {
       if (err) {
         return reject(err);
       }
