@@ -2,7 +2,7 @@
   "name": "blog-posts-app",
   "version": "1.0.0",
   "description": "",
-  "main": "mongodb://user1:user1@ds113046.mlab.com:13046/blogposts-db",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -21,6 +21,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongodb": "^3.0.4",
-    "mongoose": "^5.0.9"
+    "mongoose": "^5.0.9",
+    "npm": "^5.7.1"
   }
 }
