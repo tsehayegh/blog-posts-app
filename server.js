@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const {PORT, DATABASE_URL, databaseUrl} = require('./config');
+const {PORT, DATABASE_URL} = require('./config');
 const {Blog} = require('./models');
 
 
@@ -110,7 +110,7 @@ let server;
 
 function runServer(databaseUrl, port=PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, (err,db) => {
+    mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/blogs-app', (err,db) => {
       if (err) {
         return reject(err);
       }
